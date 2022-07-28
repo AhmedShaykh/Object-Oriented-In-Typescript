@@ -8,7 +8,7 @@
 
 # production
 /build
-/JavaScript
+/JS
 
 # misc
 .DS_Store

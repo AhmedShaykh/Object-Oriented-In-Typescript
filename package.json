@@ -1,0 +1,22 @@
+{
+  "name": "object-oriented-programming-using-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmedShaykh/Object-Oriented-Programming-using-Typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AhmedShaykh/Object-Oriented-Programming-using-Typescript/issues"
+  },
+  "homepage": "https://github.com/AhmedShaykh/Object-Oriented-Programming-using-Typescript#readme",
+  "dependencies": {
+    "typescript": "^4.8.0-beta"
+  }
+}
