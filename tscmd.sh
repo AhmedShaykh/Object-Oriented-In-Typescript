@@ -17,3 +17,6 @@
 
     - name: Create TS Config.json
       cmd: tsc --init
+
+    - name: Create Multi TS Files with Other Folders
+      cmd: tsc
