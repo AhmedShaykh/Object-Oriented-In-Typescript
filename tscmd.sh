@@ -13,4 +13,7 @@
       cmd: tsc src/filename.ts
 
     - name: Run JavaScript In Shell
-      cmd: node src/filename.js  
+      cmd: node src/filename.js
+
+    - name: Create TS Config.json
+      cmd: tsc --init
