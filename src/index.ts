@@ -177,6 +177,15 @@ datas2 = {
 
 console.log(datas2);
 
+export const metaVerse: string = "PanaVerse";
+
+export interface Course {
+    name?: string;
+    classDay?: string;
+    startUp?: string;
+    classTiming: number
+};
+
 type Count = string | number;
 
 let wei: Count;
