@@ -6,17 +6,14 @@
     - name: Create TypeScript Project
       cmd: npm install typeScript@beta
 
-    - name: Check TypeScript Project
-      cmd: tsc -v
-
-    - name: Compile TypeScript File To JavaScript
-      cmd: tsc src/filename.ts
-
-    - name: Run JavaScript In Shell
-      cmd: node src/filename.js
-
     - name: Create TS Config.json
       cmd: tsc --init
 
-    - name: Create Multi TS Files with Other Folders
+    - name: Install Node Types
+      cmd: npm install or yarn add @types/node -D
+
+    - name: Transpile TypeScript To JavaScript File
       cmd: tsc
+
+    - name: Run JavaScript In Shell
+      cmd: node src/filename.js
