@@ -9,7 +9,7 @@
     - name: Create TS Config.json
       cmd: tsc --init
 
-    - name: Install Node Types
+    - name: Install Node Types In DevDependencies
       cmd: npm install or yarn add @types/node -D
 
     - name: Transpile TypeScript To JavaScript File
