@@ -1,13 +1,13 @@
 class Admin {
     fName: String = "Ahmed"; // Initial Value
-    mName!: String; // Optional Value
+    mName!: String; // No Undefined Value
     lName: String = "Shaikh";
 };
 
 const username = new Admin();
 console.log(`${username.fName} ${username.mName = "Saleem"} ${username.lName}`);
 
-username.lName = "Shaykh"; // Initial Value Change
+username.lName = "Shaykh"; // Initial Assign New Value
 console.log(`${username.fName} ${username.lName}`);
 
 class Data {
@@ -22,7 +22,7 @@ const show: Data = new Data("Learning OOP In TypeScript");
 console.log(show.name);
 
 show.name = "Learning Classes In TypeScript";
-console.log(show.name); // Value Change
+console.log(show.name); // Assign New Value
 
 class Human {
     name: String;
@@ -127,14 +127,14 @@ pointer.x = 3;
 console.log(pointer.x, pointer.y);
 
 class ReadData {
-    readonly name: String = "AHM X"; // Initial Value No Change
+    readonly name: String = "AHM X"; // Initial Value No Assign New Value
 };
 
 const read: ReadData = new ReadData();
 console.log(read.name);
 
 class ReadValue {
-    readonly value: String; // Value Assign In One Time No Change Value
+    readonly value: String; // Value Assign In One Time No Assign New Value
 
     constructor(value: string) {
         this.value = value;
@@ -144,13 +144,13 @@ class ReadValue {
 const readVal: ReadValue = new ReadValue("CDK Start");
 console.log(readVal.value);
 
-const readVal2: ReadValue = new ReadValue("Yarn Start"); // But Add New Fresh Object
+const readVal2: ReadValue = new ReadValue("Yarn Start"); // But Value Assign New Fresh Object
 console.log(readVal2.value);
 
 // ============= Inheritance ============= //
 
 class Car {
-    color: string;
+    color: String;
 
     constructor(color: string) {
         this.color = color
@@ -158,7 +158,7 @@ class Car {
 };
 
 class Bugatti extends Car {
-    price: number;
+    price: Number;
 
     constructor(color: string, price: number) {
         super(color);
@@ -166,10 +166,110 @@ class Bugatti extends Car {
     }
 
     display(): void {
-        console.log("Bugatti Car: " + this.color);
+        console.log("Bugatti Color: " + this.color);
         console.log("Bugatti Price: " + this.price);
     }
 };
 
 const myCar1: Bugatti = new Bugatti("Black", 40000);
 myCar1.display();
+
+class Tesla extends Car {
+    feature: String;
+
+    constructor(color: string, feature: string) {
+        super(color);
+        this.feature = feature;
+    }
+
+    drive(): void {
+        console.log(`Tesla Color: ${this.color}`);
+        console.log(`Tesla Feature: ${this.feature}`);
+    }
+};
+
+const myCar2: Tesla = new Tesla("Grey", "AI");
+myCar2.drive();
+
+myCar2.color = "Red";
+myCar2.drive();
+
+class Lambo extends Car {
+    expensive: Boolean = true;
+};
+
+const myCar3 = new Lambo("Cyan");
+console.log(myCar3);
+
+class Civic extends Car {
+    model: Number;
+    company!: String;
+
+    constructor(color: string, model: number) {
+        super(color);
+        this.model = model;
+    }
+
+    displayMethod(): void {
+        if (this.company === undefined) {
+            console.log(`Civic Color: ${this.color} & Model: ${this.model}`);
+        } else {
+            console.log(`Civic Color: ${this.color} & Model: ${this.model}`);
+            console.log(`Civic Company Name: ${this.company}`);
+        }
+    }
+};
+
+let myCar4 = new Civic("Blue", 2023);
+myCar4.displayMethod();
+
+myCar4.company = "Honda";
+
+myCar4.displayMethod();
+
+// ============= OverRide ============= //
+
+class Shape {
+    area(): number {
+        return 0;
+    }
+};
+
+class Square extends Shape {
+    side: Number;
+
+    constructor(side: number) {
+        super();
+        this.side = side;
+    }
+
+    area(): number { // OverRide
+        return 5;
+    }
+}
+
+const sq: Square = new Square(5);
+console.log(sq.area());
+
+// sq.side = 4;
+// console.log(sq.area());
+
+// class School {
+//     studentName: String;
+//     teacherName: String;
+//     classTiming: String | Number;
+
+//     constructor(studentName: string, teacherName: string, classTiming: string | number) {
+//         this.studentName = studentName;
+//         this.teacherName = teacherName;
+//         this.classTiming = classTiming;
+//     }
+// }
+
+// class SchoolDay extends School {
+//     dayOfClass: String = "Wednesday";
+
+//     constructor(studentName: string, teacherName: string, classTiming: number) {
+//         super(studentName, teacherName, classTiming);
+//     }
+// }
