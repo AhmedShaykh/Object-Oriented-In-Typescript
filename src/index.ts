@@ -229,47 +229,81 @@ myCar4.displayMethod();
 
 // ============= OverRide ============= //
 
-class Shape {
-    area(): number {
-        return 0;
+class Rocket {
+    color: String;
+    company: String;
+    target: String;
+
+    constructor(color: string, company: string, target: string) {
+        this.color = color;
+        this.company = company;
+        this.target = target;
+    }
+
+    power(state: boolean): string {
+        if (state === true) {
+            return "Ready To Take Off.";
+        } else {
+            return "Shutting Down Engine.";
+        }
     }
 };
 
-class Square extends Shape {
-    side: Number;
+class Falcon extends Rocket {
+    allTestingComplete = true;
 
-    constructor(side: number) {
-        super();
-        this.side = side;
+    constructor(color: string, company: string, target: string) {
+        super(color, company, target);
     }
 
-    area(): number { // OverRide
-        return 5;
+    go(): void {
+        console.log(`Color: ${this.color}, Company: ${this.company}, Target: ${this.target}, All Testing Complete: ${this.allTestingComplete}`);
     }
-}
 
-const sq: Square = new Square(5);
-console.log(sq.area());
+    power(state: boolean): string { // OverRide
+        if (state === true) {
+            return "Rocket Ready To Take Off.";
+        } else {
+            return "Rocket Shutting Down Engine.";
+        }
+    }
+};
 
-// sq.side = 4;
-// console.log(sq.area());
+const fly: Falcon = new Falcon("Grey", "SpaceX", "Going To Mars");
+console.log(fly.power(true));
 
-// class School {
-//     studentName: String;
-//     teacherName: String;
-//     classTiming: String | Number;
+fly.go();
+console.log(fly.power(false));
 
-//     constructor(studentName: string, teacherName: string, classTiming: string | number) {
-//         this.studentName = studentName;
-//         this.teacherName = teacherName;
-//         this.classTiming = classTiming;
-//     }
-// }
+class School {
+    studentName: String;
+    teacherName: String;
+    classTiming: String | Number;
 
-// class SchoolDay extends School {
-//     dayOfClass: String = "Wednesday";
+    constructor(studentName: string, teacherName: string, classTiming: string | number) {
+        this.studentName = studentName;
+        this.teacherName = teacherName;
+        this.classTiming = classTiming;
+    }
+};
 
-//     constructor(studentName: string, teacherName: string, classTiming: number) {
-//         super(studentName, teacherName, classTiming);
-//     }
-// }
+class SchoolDay extends School {
+    dayOfClass: String = "Wednesday";
+
+    constructor(studentName: string, teacherName: string, classTiming: number) { // OverRide
+        super(studentName, teacherName, classTiming);
+    }
+
+    onClass() {
+        console.log(`Student Name: ${this.studentName}`);
+        console.log(`Teacher Name: ${this.teacherName}`);
+        console.log(`Class Timing: ${this.classTiming} PM`);
+        console.log(`Day Of Class: ${this.dayOfClass}`);
+    }
+};
+
+const classDay = new SchoolDay("Ahmed", "Zia", 6);
+classDay.onClass();
+
+const myClass = new School("Ahmed", "Adil", "8 PM");
+console.log(myClass.classTiming);
