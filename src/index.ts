@@ -7,6 +7,9 @@ class Admin {
 const username = new Admin();
 console.log(`${username.fName} ${username.mName = "Saleem"} ${username.lName}`);
 
+username.lName = "Shaykh"; // Initial Value Change
+console.log(`${username.fName} ${username.lName}`);
+
 class Data {
     name: String;
 
@@ -17,6 +20,9 @@ class Data {
 
 const show: Data = new Data("Learning OOP In TypeScript");
 console.log(show.name);
+
+show.name = "Learning Classes In TypeScript";
+console.log(show.name); // Value Change
 
 class Human {
     name: String;
@@ -38,13 +44,6 @@ user1.eat();
 
 const user2: Human = new Human("Abrar", "Chips");
 user2.eat();
-
-class ReadData {
-    readonly name: String = "AHM X";
-};
-
-const read: ReadData = new ReadData();
-console.log(read.name);
 
 class Calculator { // Overloads
     add(x: number, y: number): number;
@@ -91,6 +90,7 @@ class Hide {
 
 const hidden = new Hide();
 console.log(hidden.length); // Getter
+
 hidden.length = 5; // Setter
 console.log(hidden.length);
 
@@ -122,8 +122,30 @@ class Pointer {
 
 const pointer = new Pointer(1, 2);
 console.log(pointer.x, pointer.y);
+
 pointer.x = 3;
 console.log(pointer.x, pointer.y);
+
+class ReadData {
+    readonly name: String = "AHM X"; // Initial Value No Change
+};
+
+const read: ReadData = new ReadData();
+console.log(read.name);
+
+class ReadValue {
+    readonly value: String; // Value Assign In One Time No Change Value
+
+    constructor(value: string) {
+        this.value = value;
+    }
+};
+
+const readVal: ReadValue = new ReadValue("CDK Start");
+console.log(readVal.value);
+
+const readVal2: ReadValue = new ReadValue("Yarn Start"); // But Add New Fresh Object
+console.log(readVal2.value);
 
 // ============= Inheritance ============= //
 
