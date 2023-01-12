@@ -358,3 +358,20 @@ const driving2 = new SportCar();
 driving2.drive();
 
 // ============= Index Signatures ============= //
+
+class MyClass {
+    [s: string]: boolean | ((s: string) => boolean);
+
+    isValid = true;
+
+    check(s: string) {
+        return this[s] as boolean;
+    }
+};
+
+let myObj = new MyClass();
+myObj["isExist"] = false;
+
+console.log(myObj.isValid);
+console.log(myObj.check("isExist"));
+console.log(myObj.check("isValid"));
