@@ -18,5 +18,8 @@
   "homepage": "https://github.com/AhmedShaykh/Object-Oriented-Programming-In-Typescript#readme",
   "devDependencies": {
     "@types/node": "^18.11.18"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.20"
   }
 }

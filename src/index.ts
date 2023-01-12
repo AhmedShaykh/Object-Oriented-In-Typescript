@@ -307,3 +307,54 @@ classDay.onClass();
 
 const myClass = new School("Ahmed", "Adil", "8 PM");
 console.log(myClass.classTiming);
+
+class Shape {
+    area(): number {
+        return 0;
+    }
+};
+
+class Square extends Shape {
+    side: number;
+
+    constructor(side: number) {
+        super();
+        this.side = side;
+    }
+
+    area() {
+        return this.side ** 2
+    }
+};
+
+const sq = new Square(4);
+console.log(sq.area());
+
+const hexa = new Square(6);
+console.log(hexa.area());
+
+class Vehicle {
+    drive(): void {
+        console.log("Driving...");
+    }
+};
+
+class SportCar extends Vehicle {
+    drive(): void {
+        console.log("Speeding up...");
+    }
+};
+
+class ElectricCar extends SportCar {
+    drive(): void {
+        console.log("Accelerating Silently...");
+    }
+};
+
+const driving = new ElectricCar();
+driving.drive();
+
+const driving2 = new SportCar();
+driving2.drive();
+
+// ============= Index Signatures ============= //
