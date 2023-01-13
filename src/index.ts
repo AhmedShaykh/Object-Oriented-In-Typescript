@@ -375,3 +375,122 @@ myObj["isExist"] = false;
 console.log(myObj.isValid);
 console.log(myObj.check("isExist"));
 console.log(myObj.check("isValid"));
+
+// ============= Implements ============= //
+
+interface Pingable {
+    ping(): void;
+};
+
+class Sonar implements Pingable { // Implements Use In Interface
+    ping(): void {
+        console.log("Ping!");
+    }
+};
+
+class Ball implements Pingable {
+    pong(): void {
+        console.log("Pong!");
+    }
+
+    ping(): void {
+        console.log("Ping 2!");
+    }
+};
+
+const bounce = new Sonar();
+bounce.ping();
+
+const bounce2 = new Ball();
+bounce2.pong();
+bounce2.ping();
+
+class Animal {
+    move() {
+        console.log("Moving Along!");
+    }
+};
+
+class Dog implements Animal { // Implements Also Use In Classes
+    move() {                  // But Parent Class (Method or Property) Repeat Implement In Child Class
+        console.log("Moving Along!");
+    }
+
+    woof(times: number) {
+        for (let i = 0; i < times; i++) {
+            console.log("Woof!");
+        }
+    }
+};
+
+class Cat extends Animal { // Extends Only Use In Classes Not Interface
+    meow(times: number) {
+        for (let i = 0; i < times; i++) {
+            console.log("Meow!");
+        }
+    }
+};
+
+const d = new Dog();
+d.woof(3);
+d.move();
+
+const c = new Cat();
+c.meow(4);
+
+// ============= Modifiers ============= //
+
+class Greeter {
+    greeting() { // Default Visibility Is Public
+        console.log("Hi!");
+    }
+};
+
+const greet = new Greeter();
+greet.greeting();
+
+class Greeter2 {
+    private name: string; // Private Method Only Use In Own Class 
+
+    constructor(_name: string) {
+        this.name = _name;
+    }
+
+    greeting() {
+        console.log("Hi " + this.name);
+    }
+};
+
+const greet2 = new Greeter2("Ahmed");
+greet2.greeting();
+
+class Greeter3 {
+    private name: String = "Metaverse"; // Private Value Not Change It...
+
+    greeting() {
+        console.log("Hi " + this.name);
+    }
+};
+
+const greet3 = new Greeter3();
+greet3.greeting();
+
+class Greeter4 {
+    public greet() {
+        console.log("Hello, " + this.getName());
+    }
+
+    protected getName() {
+        return "World";
+    }
+};
+
+class SpecialGreeter extends Greeter4 {
+    public howdy() {
+        console.log("Howdy, " + this.getName());
+    }
+};
+
+const greet4 = new SpecialGreeter();
+greet4.greet();
+greet4.howdy();
