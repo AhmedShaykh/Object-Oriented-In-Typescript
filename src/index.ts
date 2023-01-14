@@ -450,7 +450,7 @@ const greet = new Greeter();
 greet.greeting();
 
 class Greeter2 {
-    private name: string; // Private Method Only Use In Own Class 
+    private name: string; // Private Property Only Use In Own Class 
 
     constructor(_name: string) {
         this.name = _name;
@@ -465,7 +465,7 @@ const greet2 = new Greeter2("Ahmed");
 greet2.greeting();
 
 class Greeter3 {
-    private name: String = "Metaverse"; // Private Value Not Change It...
+    private name: String = "Metaverse"; // Private Property Not Read & Change It...
 
     greeting() {
         console.log("Hi " + this.name);
@@ -475,22 +475,111 @@ class Greeter3 {
 const greet3 = new Greeter3();
 greet3.greeting();
 
-class Greeter4 {
+class Base {
+    private x: Number = 0;
+};
+
+const checker = new Base();
+console.log(checker["x"]); // But Problem In TypeScript Is Private Property Assign In This Method!
+
+class Check {
+    #x: Number; // JavaScript This New Native Build-in Private Property Solve The Issue!
+
+    constructor(_x: number) {
+        this.#x = _x;
+    }
+
+    greeting() {
+        console.log(this.#x);
+    }
+};
+
+const checker2 = new Check(7);
+checker2.greeting();
+
+class Greeter5 {
     public greet() {
         console.log("Hello, " + this.getName());
     }
 
-    protected getName() {
+    protected getName() { // Protected Property Access In Child Class
         return "World";
     }
 };
 
-class SpecialGreeter extends Greeter4 {
-    public howdy() {
-        console.log("Howdy, " + this.getName());
+class SpecialGreeter extends Greeter5 {
+    public hola() {
+        console.log("Hola, " + this.getName());
     }
 };
 
-const greet4 = new SpecialGreeter();
-greet4.greet();
-greet4.howdy();
+const greet5 = new SpecialGreeter();
+greet5.greet();
+greet5.hola();
+
+// ============= Static ============= //
+
+class MyStatic {
+    static x: Number = 0;
+    y: Number = 1;
+
+    static printX(): void {
+        console.log(MyStatic.x);
+    }
+};
+
+console.log(MyStatic.x) // Static Value Only Use In Classes Not Object
+MyStatic.printX();
+
+const stat = new MyStatic();
+console.log(stat.y);
+
+class MyStatic2 {
+    private static count: number = 0; // State Maintain
+    id: number = 0;
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+        this.id = ++MyStatic2.count; // Count Is Static
+    }
+};
+
+const objE = new MyStatic2("Ahmed");
+console.log(`${objE.name}, ${objE.id}`);
+
+const objE2 = new MyStatic2("Saleem");
+console.log(`${objE2.name}, ${objE2.id}`);
+
+// ============= Generic Classes ============= //
+
+class Box<T> {
+    contents: T;
+
+    constructor(value: T) {
+        this.contents = value;
+    }
+};
+
+const type = new Box<Boolean>(true);
+console.log(type.contents);
+
+const type2 = new Box<Number>(202);
+console.log(type2.contents);
+
+class MyTypes<T1, T2> {
+    name: T1;
+    id: T2;
+
+    constructor(name: T1, id: T2) {
+        this.name = name;
+        this.id = id;
+    }
+
+    generic() {
+        console.log(`${this.name}, ${this.id}`)
+    }
+};
+
+const gener = new MyTypes("Ahmed Shaykh", 786);
+gener.generic();
