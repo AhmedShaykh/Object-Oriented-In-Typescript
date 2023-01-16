@@ -73,7 +73,7 @@ console.log(val1.x, val1.y);
 val1.scale(4);
 console.log(val1.x, val1.y);
 
-// ============= Getters / Setters ============= //
+// ============= Getters / Setters (Encapsulation) ============= //
 
 class Hide {
     private _length: number = 0;
@@ -227,7 +227,7 @@ myCar4.company = "Honda";
 
 myCar4.displayMethod();
 
-// ============= OverRide ============= //
+// ============= OverRide (Polymorphism) ============= //
 
 class Rocket {
     color: String;
@@ -583,3 +583,52 @@ class MyTypes<T1, T2> {
 
 const gener = new MyTypes("Ahmed Shaykh", 786);
 gener.generic();
+
+// ============= Abstract ============= //
+
+abstract class Crypto {
+    abstract encrypt(): string; // Implementions Hide
+    abstract decrypt(): string;
+};
+
+class BTC extends Crypto {
+    key: string;
+
+    constructor(key: string) {
+        super();
+        this.key = key;
+    }
+
+    encrypt(): string { // Than Assign Implementions It Child Class
+        return "Encrypted Text 1";
+    }
+
+    decrypt(): string {
+        return "Decrypted Text 1";
+    }
+};
+
+class ETH extends Crypto {
+    keySize: number;
+
+    constructor(keySize: number) {
+        super();
+        this.keySize = keySize;
+    }
+
+    encrypt(): string {
+        return "Encrypted Text 2";
+    }
+
+    decrypt(): string {
+        return "Decrypted Text 2";
+    }
+};
+
+const btc = new BTC("fbfbgjgriejrenfknfsqdm");
+console.log(btc.encrypt());
+console.log(btc.decrypt());
+
+const eth = new ETH(404);
+console.log(eth.encrypt());
+console.log(eth.decrypt());

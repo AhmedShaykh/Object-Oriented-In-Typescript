@@ -37,7 +37,7 @@ class Goblin extends Character {
         super(name, damage, speed);
     }
 
-    public damagePerSecond(): number { // Implements Method
+    public damagePerSecond(): number { // Implements Assign
         return this.damage * this.attackSpeed;
     }
 };
@@ -68,9 +68,9 @@ animal.makeSound();
 const animal2 = new Cat();
 animal2.makeSound();
 
-interface Vehicle { // Interface Not Assign Implementions Interface Use In Structure Of Object
+interface Vehicle { // Interface Not Assign Implementions Interface Use Only Structure Of Object
     make: string;
-    model: number
+    model: number;
     startEngine(): void;
 };
 
@@ -84,32 +84,31 @@ class Car implements Vehicle {
     }
 
     startEngine() {
-        console.log(`The ${this.make} ${this.model}'s engine is now running.`);
+        console.log(`The ${this.make} ${this.model}'s Engine is now Running.`);
     }
 };
 
 let myCar = new Car("Toyota", 2022);
 myCar.startEngine();
 
-abstract class Motorcycle { // Abstraction Implementions Hide & Assign Child Class
-    make!: string;
+abstract class Motorcycle {
+    make: string = "Harley Davidson"; // Abstraction Implementions Hide Then Assign Child Class
     model!: string;
     abstract startEngine(): void;
 };
 
 class HarleyDavidson extends Motorcycle {
-    constructor(make: string, model: string) {
+    constructor(model: string) {
         super();
-        this.make = make;
         this.model = model;
     }
 
     startEngine() {
-        console.log(`The ${this.make} ${this.model}'s engine is now running.`);
+        console.log(`The ${this.make} ${this.model}'s Engine is now Running.`);
     }
 };
 
-let harley = new HarleyDavidson("Harley Davidson", "Iron 883");
+let harley = new HarleyDavidson("Iron 883");
 harley.startEngine();
 
 // ============= Encapsulation ============= //
@@ -137,4 +136,120 @@ class Person {
 const man = new Person('Get Set');
 console.log(man.name);
 
+man.name = "Accessors";
+console.log(man.name);
+
 // ============= Inheritance ============= //
+
+class Parent {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+};
+
+class Boy extends Parent {
+    bike: string = "Black";
+
+    getRide() {
+        console.log(`The Color Of ${this.name} Bike Is ${this.bike}`);
+    }
+};
+
+const ride = new Boy("Ali");
+ride.getRide();
+
+class Ai {
+    action: string;
+    time: string;
+
+    constructor(action: string, time: string) {
+        this.action = action;
+        this.time = time;
+    }
+};
+
+class Siri extends Ai {
+    talk(): void {
+        console.log("Hi I'm Siri");
+        console.log(`Your Action: ${this.action}, Your Time: ${this.time}`);
+    }
+};
+
+class OpenAi extends Ai {
+    text: string;
+    feedback!: string;
+
+    constructor(action: string, time: string, text: string) {
+        super(action, time);
+        this.text = text;
+    }
+
+    yourText(): void {
+        console.log(`Yout Text: ${this.text}`);
+    }
+
+    chat() {
+        console.log(`Your Action: ${this.action}, Your Time: ${this.time}, \nYour Text: ${this.text}, Your FeedBack: ${this.feedback}`);
+    }
+};
+
+class Alexa extends Ai {
+    response: string;
+
+    constructor(action: string, time: string, response?: string) {
+        super(action, time);
+        this.response = response || "Your Response";
+    }
+};
+
+const myAi1 = new Siri("Task 1", "5 Mins");
+myAi1.talk();
+
+const myAi2 = new OpenAi("Task 2", "2 Mins", "Solve My Error");
+myAi2.yourText();
+
+myAi2.feedback = "Your Are Amazing Chat GTP";
+myAi2.chat();
+
+const myAi3 = new Alexa("Task 3", "7 Mins");
+console.log(myAi3);
+
+myAi3.response = "Error 404!";
+console.log(`Your Response: ${myAi3.response}`);
+
+// ============= Polymorphism ============= //
+
+class Engine {
+    speed: string;
+    working: number;
+
+    constructor(speed: string, working: number) {
+        this.speed = speed;
+        this.working = working;
+    };
+
+    progress() {
+        console.log(`Engine Speed: ${this.speed}, Engine Working Hours ${this.working} Unstoppable`);
+    }
+};
+
+class EngineX extends Engine {
+    restTime: number;
+
+    constructor(speed: string, working: number, restTime: number) {
+        super(speed, working);
+        this.restTime = restTime;
+    };
+
+    progress() {
+        console.log(`Engine Speed: ${this.speed}, Engine Working Hours ${this.working}, \nBut Rest Time is ${this.restTime} Hours`);
+    }
+};
+
+const myEngineX = new EngineX("12x Pro", 12, 2);
+myEngineX.progress();
+
+const myEngine = new Engine("10x", 9);
+myEngine.progress();
