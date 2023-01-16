@@ -22,10 +22,14 @@ class Calc {
     divide() {
         return this.firstNumber / this.secondNumber;
     }
+
+    power() {
+        return this.firstNumber ** this.secondNumber;
+    }
 };
 
-let cal1: Calc = new Calc(100, 50);
-console.log(cal1.add());
+let cal1: Calc = new Calc(2, 4);
+console.log(cal1.power());
 
 let cal2: Calc = new Calc(20, 10);
 console.log(cal2.multi());

@@ -1,3 +1,75 @@
+class Human {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    eat() {
+        console.log(this.name + " is a Human and is Eating Food");
+    }
+};
+
+class Animal {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    eat() {
+        console.log(this.name + " is a Animal and is Eating Other Food");
+    }
+};
+
+class Robot {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+};
+
+let h: Human = new Human("Tom");
+let a: Animal = new Animal("Goat");
+let r: Robot = new Robot("R2-D2");
+
+h = a; // Stale Object
+h.eat();
+
+r = a;
+console.log(r.name);
+
+let hum: Human = new Animal("Dog"); // Fresh Object
+hum.eat();
+
+let r0: Robot = new Animal("Donkey"); // In This Method Class Type Check Object Same Property & Method Than Accept It!
+console.log(r0.name); // It Assign Same Property But Not Assign Extra Property!
+
+class WildAnimal {
+    title: string;
+
+    constructor(title: string) {
+        this.title = title;
+    }
+
+    eat() {
+        console.log(this.title + " is a Wild Animal and is Eating Animals");
+    }
+};
+
+let wild: WildAnimal = new WildAnimal("Tiger"); // Fresh Object
+wild.eat();
+
+wild.title = "Lion"; // Now Stale Object
+wild.eat();
+
+console.log(wild instanceof WildAnimal);
+
+console.log(r0 instanceof Human);
+
+console.log(h instanceof Animal);
+
 // ============= Abstraction ============= //
 
 abstract class User { // Abstraction Not Use Object Rather Inheritance Other Class
@@ -16,6 +88,7 @@ class MyAdmin extends User {
 
 const MyAb = new MyAdmin();
 MyAb.printName();
+
 console.log(MyAb.getName());
 
 abstract class Character {
@@ -45,28 +118,28 @@ class Goblin extends Character {
 const myCharacter = new Goblin("Thomas", 4, 7);
 console.log(myCharacter.damagePerSecond());
 
-abstract class Animal {
+abstract class Pet {
     abstract makeSound(): void
 
 };
 
-class Dog extends Animal {
+class Dog extends Pet {
     makeSound(): void {
-        console.log("Woof woof");
+        console.log("Woof Woof");
     }
 };
 
-class Cat extends Animal {
+class Cat extends Pet {
     makeSound(): void {
-        console.log("Meow meow");
+        console.log("Meow Meow");
     }
 };
 
-const animal = new Dog();
-animal.makeSound();
+const pet = new Dog();
+pet.makeSound();
 
-const animal2 = new Cat();
-animal2.makeSound();
+const pet2 = new Cat();
+pet2.makeSound();
 
 interface Vehicle { // Interface Not Assign Implementions Interface Use Only Structure Of Object
     make: string;
@@ -138,6 +211,28 @@ console.log(man.name);
 
 man.name = "Accessors";
 console.log(man.name);
+
+class Bank {
+    #password: string;
+
+    constructor(password: string) {
+        this.#password = password;
+    }
+
+    get password(): string {
+        return this.#password;
+    }
+
+    set password(value: string) {
+        this.#password = value;
+    }
+};
+
+const myBank = new Bank("Password");
+console.log(myBank.password);
+
+myBank.password = "My Password";
+console.log(myBank.password);
 
 // ============= Inheritance ============= //
 
