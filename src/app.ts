@@ -72,7 +72,7 @@ console.log(h instanceof Animal);
 
 // ============= Abstraction ============= //
 
-abstract class User { // Abstraction Not Use Object Rather Inheritance Other Class
+abstract class User { // Abstraction Not Use Object Rather Inherit Other Class
     abstract getName(): string; // Abstraction Method Use In Abstract Class
 
     printName(): void {
@@ -219,20 +219,20 @@ class Bank {
         this.#password = password;
     }
 
-    get password(): string {
+    get myPassword(): string {
         return this.#password;
     }
 
-    set password(value: string) {
+    set myPassword(value: string) {
         this.#password = value;
     }
 };
 
 const myBank = new Bank("Password");
-console.log(myBank.password);
+console.log(myBank.myPassword);
 
-myBank.password = "My Password";
-console.log(myBank.password);
+myBank.myPassword = "My Password";
+console.log(myBank.myPassword);
 
 // ============= Inheritance ============= //
 
@@ -248,7 +248,7 @@ class Boy extends Parent {
     bike: string = "Black";
 
     getRide() {
-        console.log(`The Color Of ${this.name} Bike Is ${this.bike}`);
+        console.log(`${this.name} Bike Color Is ${this.bike}`);
     }
 };
 

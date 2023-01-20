@@ -7,11 +7,11 @@ class Admin {
 const username = new Admin();
 console.log(`${username.fName} ${username.mName = "Saleem"} ${username.lName}`);
 
-username.lName = "Shaykh"; // Initial Assign New Value
+username.lName = "Shaykh"; // Initial Value Assign New Value
 console.log(`${username.fName} ${username.lName}`);
 
 class Data {
-    name: String;
+    name: String; // Property
 
     constructor(name: String) {
         this.name = name;
@@ -33,7 +33,7 @@ class Human {
         this.food = food;
     }
 
-    eat() {
+    eat() { // Method
         console.log(`${this.name} is a Human & is Eating ${this.food}`);
     }
 };
@@ -76,9 +76,9 @@ console.log(val1.x, val1.y);
 // ============= Getters / Setters (Encapsulation) ============= //
 
 class Hide {
-    private _length: number = 0;
+    private _length: number = 0; // Accessors
 
-    // Accessors
+    // Accessors Private Value Not Access Directly Get Value In Method
     get length() {
         return this._length;
     }
@@ -252,19 +252,15 @@ class Rocket {
 class Falcon extends Rocket {
     allTestingComplete = true;
 
-    constructor(color: string, company: string, target: string) {
-        super(color, company, target);
-    }
-
     go(): void {
         console.log(`Color: ${this.color}, Company: ${this.company}, Target: ${this.target}, All Testing Complete: ${this.allTestingComplete}`);
     }
 
     power(state: boolean): string { // OverRide
         if (state === true) {
-            return "Rocket Ready To Take Off.";
+            return "Falcon Ready To Take Off.";
         } else {
-            return "Rocket Shutting Down Engine.";
+            return "Falcon Shutting Down Engine.";
         }
     }
 };
@@ -465,7 +461,7 @@ const greet2 = new Greeter2("Ahmed");
 greet2.greeting();
 
 class Greeter3 {
-    private name: String = "Metaverse"; // Private Property Not Read & Change It...
+    private name: String = "Metaverse"; // Private Property Not Read Directly & Change It...
 
     greeting() {
         console.log("Hi " + this.name);
@@ -581,7 +577,7 @@ class MyTypes<T1, T2> {
     }
 };
 
-const gener = new MyTypes("Ahmed Shaykh", 786);
+const gener = new MyTypes<string, number>("Ahmed Shaykh", 786);
 gener.generic();
 
 // ============= Abstract ============= //
@@ -609,11 +605,11 @@ class BTC extends Crypto {
 };
 
 class ETH extends Crypto {
-    keySize: number;
+    key: number;
 
-    constructor(keySize: number) {
+    constructor(key: number) {
         super();
-        this.keySize = keySize;
+        this.key = key;
     }
 
     encrypt(): string {
