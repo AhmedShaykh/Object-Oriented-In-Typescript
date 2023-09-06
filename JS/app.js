@@ -1,5 +1,3 @@
-// ============== TypeScript Converted JavaScript ============== //
-
 class Human {
     name;
     constructor(name) {
@@ -278,4 +276,4 @@ const myEngineX = new EngineX("12x Pro", 12, 2);
 myEngineX.progress();
 const myEngine = new Engine("10x", 9);
 myEngine.progress();
-export { };
+export {};

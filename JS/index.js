@@ -1,5 +1,3 @@
-// ============== TypeScript Converted JavaScript ============== //
-
 class Admin {
     fName = "Ahmed"; // Initial Value
     mName; // No Undefined Value
@@ -514,4 +512,4 @@ console.log(btc.decrypt());
 const eth = new ETH(404);
 console.log(eth.encrypt());
 console.log(eth.decrypt());
-export { };
+export {};
