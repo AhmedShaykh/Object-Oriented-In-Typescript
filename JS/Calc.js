@@ -1,3 +1,5 @@
+// ============== Calculator In TypeScript Converted JavaScript ============== //
+
 class Calc {
     firstNumber;
     secondNumber;
@@ -27,4 +29,4 @@ console.log(cal1.power());
 let cal2 = new Calc(20, 10);
 console.log(cal2.multi());
 console.log(cal2.divide());
-export {};
+export { };
