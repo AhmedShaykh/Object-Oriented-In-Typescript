@@ -1,0 +1,26 @@
+{
+  "name": "object-oriented-programming-in-typescript",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc --watch",
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmedShaykh/Object-Oriented-Programming-In-Typescript.git"
+  },
+  "author": "AhmedShaykh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AhmedShaykh/Object-Oriented-Programming-In-Typescript/issues"
+  },
+  "homepage": "https://github.com/AhmedShaykh/Object-Oriented-Programming-In-Typescript#readme",
+  "dependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6"
+  }
+}
