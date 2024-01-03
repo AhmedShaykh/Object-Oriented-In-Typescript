@@ -1,6 +1,6 @@
-// ================ Generators ================ //
+// ==================== Generators ==================== //
 
-function* gen() {
+function* gen(): Generator<number> { // Generator Function Is Return Object
 
     let num: number = 1;
 
@@ -11,10 +11,10 @@ function* gen() {
 
 const autoGen = gen();
 
-console.log(autoGen.next())
-console.log(autoGen.next())
-console.log(autoGen.next())
-console.log(autoGen.next())
+console.log(autoGen.next());
+console.log(autoGen.next());
+console.log(autoGen.next());
+console.log(autoGen.next());
 
 function* generator(start: number, end: number): Generator<number> {
 
@@ -61,7 +61,7 @@ for (const value of fun) {
     console.log(value);
 }
 
-// ================ Decorators ================ //
+// ==================== Decorators ==================== //
 
 function LogClass(target: Function, context?: any) { // TypeScript Version 5 Decorator Function Are Minimum 2 Parameters
     console.log({ target });
@@ -103,7 +103,7 @@ console.log(userDec.name);
 
 function MyDecoratorFun(classConstructor: any, methodName: string, descriptor: PropertyDescriptor) {
     console.log({ methodName });
-    console.log(descriptor);
+    console.log(descriptor); // Descriptor Only Run In Method (Function)
 };
 
 class User2 {
@@ -140,11 +140,11 @@ class User3 {
         this.email = email;
     };
 
-    message(@MyDecoratorPara msg: string) { // Decorator Not Add This Method
-        console.log("Decorator Pass In Method Parameter" + msg);
+    message(@MyDecoratorPara msg: string) { // Decorator Not Run This Method
+        console.log("Decorator Pass In Method " + msg);
     };
 };
 
 const userDec3: User3 = new User3("AHM X", "ahmx.com");
 
-console.log(userDec3);
+userDec3.message("Parameter");

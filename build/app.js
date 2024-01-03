@@ -1,352 +1,280 @@
 class Human {
-    name: string;
-
-    constructor(name: string) {
+    name;
+    constructor(name) {
         this.name = name;
     }
-
     eat() {
         console.log(this.name + " is a Human and is Eating Food");
     }
-};
-
+}
+;
 class Animal {
-    name: string;
-
-    constructor(name: string) {
+    name;
+    constructor(name) {
         this.name = name;
     }
-
     eat() {
         console.log(this.name + " is a Animal and is Eating Other Food");
     }
-};
-
+}
+;
 class Robot {
-    name: string;
-
-    constructor(name: string) {
+    name;
+    constructor(name) {
         this.name = name;
     }
-};
-
-let h: Human = new Human("Tom");
-let a: Animal = new Animal("Goat");
-let r: Robot = new Robot("R2-D2");
-
+}
+;
+let h = new Human("Tom");
+let a = new Animal("Goat");
+let r = new Robot("R2-D2");
 h = a; // Stale Object
 h.eat();
-
 r = a;
 console.log(r.name);
-
-let hum: Human = new Animal("Dog"); // Fresh Object
+let hum = new Animal("Dog"); // Fresh Object
 hum.eat();
-
-let r0: Robot = new Animal("Donkey"); // In This Method Class Type Check Object Required Property & Method Than Accept It!
+let r0 = new Animal("Donkey"); // In This Method Class Type Check Object Required Property & Method Than Accept It!
 console.log(r0); // It Assign Same Property But Not Save Extra Property!
-
 class WildAnimal {
-    title: string;
-
-    constructor(title: string) {
+    title;
+    constructor(title) {
         this.title = title;
     }
-
     eat() {
         console.log(this.title + " is a Wild Animal");
     }
-};
-
-let wild: WildAnimal = new WildAnimal("Tiger"); // Fresh Object
+}
+;
+let wild = new WildAnimal("Tiger"); // Fresh Object
 wild.eat();
-
 wild.title = "Lion"; // Now Stale Object
 wild.eat();
-
 console.log(wild instanceof WildAnimal);
-
 console.log(r0 instanceof Human);
-
 console.log(h instanceof Animal);
-
 // =================== Abstraction =================== //
-
-abstract class User { // Abstract Class Not Create Direct Object It Assign In Child Class
-    abstract getName(): string; // Even Abstract Method Or Property Not Implement In Own Class
-
-    printName(): void {
+class User {
+    printName() {
         console.log(`Hello ${this.getName()}`);
     }
-};
-
+}
+;
 class MyAdmin extends User {
-    getName(): string { // Than Assign Implement In Child Class
-        return "Crypto"
+    getName() {
+        return "Crypto";
     }
-};
-
+}
+;
 const MyAb = new MyAdmin();
 MyAb.printName();
-
 console.log(MyAb.getName());
-
-abstract class Character {
-    name: string;
-    damage: number;
-    abstract attackSpeed: number;
-
-    constructor(name: string, damage: number) {
+class Character {
+    name;
+    damage;
+    constructor(name, damage) {
         this.name = name;
         this.damage = damage;
     }
-
-    abstract damagePerSecond(): number; // Implementions Hide
-};
-
+}
+;
 class Goblin extends Character {
-    attackSpeed: number;
-
-    constructor(name: string, damage: number, attackSpeed: number) {
+    attackSpeed;
+    constructor(name, damage, attackSpeed) {
         super(name, damage);
         this.attackSpeed = attackSpeed;
     }
-
-    damagePerSecond(): number { // Implements Assign
+    damagePerSecond() {
         return this.damage * this.attackSpeed;
     }
-};
-
+}
+;
 const myCharacter = new Goblin("Thomas", 4, 7);
 console.log(myCharacter.damagePerSecond());
 console.log(myCharacter.name);
-
-abstract class Pet {
-    abstract makeSound(): void
-};
-
+class Pet {
+}
+;
 class Dog extends Pet {
-    makeSound(): void {
+    makeSound() {
         console.log("Woof Woof");
     }
-};
-
+}
+;
 class Cat extends Pet {
-    makeSound(): void {
+    makeSound() {
         console.log("Meow Meow");
     }
-};
-
+}
+;
 const pet = new Dog();
 pet.makeSound();
-
 const pet2 = new Cat();
 pet2.makeSound();
-
-interface Vehicle { // Interface Use In Structure Of Object
-    make: string;
-    model: number;
-    startEngine(): void;
-};
-
-class Car implements Vehicle {
-    make: string;
-    model: number;
-
-    constructor(make: string, model: number) {
+;
+class Car {
+    make;
+    model;
+    constructor(make, model) {
         this.make = make;
         this.model = model;
     }
-
     startEngine() {
         console.log(`The ${this.make} ${this.model}'s Engine is now Running.`);
     }
-};
-
+}
+;
 let myCar = new Car("Toyota", 2022);
 myCar.startEngine();
-
-abstract class Motorcycle {
-    make: string = "Harley Davidson";
-    model!: string;
-    abstract startEngine(): void; // Abstraction Implementions Hide Then Value In Assign Child Class
-};
-
+class Motorcycle {
+    make = "Harley Davidson";
+    model;
+}
+;
 class HarleyDavidson extends Motorcycle {
-    constructor(model: string) {
+    constructor(model) {
         super();
         this.model = model;
     }
-
     startEngine() {
         console.log(`The ${this.make} ${this.model}'s Engine is now Running.`);
     }
-};
-
+}
+;
 let harley = new HarleyDavidson("Iron 883");
 harley.startEngine();
-
 // =================== Encapsulation =================== //
-
 class Person {
-    private _name: string;
-
-    constructor(name: string) {
+    _name;
+    constructor(name) {
         this._name = name;
     }
-
-    private getName() { // Encapsulation Method And Property Hide & Abstraction Implementions Hide
+    getName() {
         return this._name;
     }
-
-    get name(): string {
+    get name() {
         return this.getName();
     }
-
-    set name(value: string) {
+    set name(value) {
         this._name = value;
     }
-};
-
+}
+;
 const man = new Person("Get Set");
 console.log(man.name);
-
 man.name = "Accessors";
 console.log(man.name);
-
 class Bank {
-    #password: string;
-
-    constructor(password: string) {
+    #password;
+    constructor(password) {
         this.#password = password;
     }
-
-    get myPassword(): string {
+    get myPassword() {
         return this.#password;
     }
-
-    set myPassword(value: string) {
+    set myPassword(value) {
         this.#password = value;
     }
-};
-
+}
+;
 const myBank = new Bank("Password");
 console.log(myBank.myPassword);
-
 myBank.myPassword = "My Password";
 console.log(myBank.myPassword);
-
 // =================== Inheritance =================== //
-
 class Parent {
-    name: string;
-
-    constructor(name: string) {
+    name;
+    constructor(name) {
         this.name = name;
     }
-};
-
+}
+;
 class Boy extends Parent {
-    bike: string = "Black";
-
+    bike = "Black";
     getRide() {
         console.log(`${this.name} Bike Color Is ${this.bike}`);
     }
-};
-
+}
+;
 const ride = new Boy("Ali");
 ride.getRide();
-
 class Ai {
-    action: string;
-    time: string;
-
-    constructor(action: string, time: string) {
+    action;
+    time;
+    constructor(action, time) {
         this.action = action;
         this.time = time;
     }
-};
-
+}
+;
 class Siri extends Ai {
-    talk(): void {
+    talk() {
         console.log("Hi I'm Siri");
         console.log(`Your Action: ${this.action}, Your Time: ${this.time}`);
     }
-};
-
+}
+;
 class OpenAi extends Ai {
-    text: string;
-    feedback!: string;
-
-    constructor(action: string, time: string, text: string) {
+    text;
+    feedback;
+    constructor(action, time, text) {
         super(action, time);
         this.text = text;
     }
-
-    yourText(): void {
+    yourText() {
         console.log(`Yout Text: ${this.text}`);
     }
-
     chat() {
         console.log(`Your Action: ${this.action}, Your Time: ${this.time}, \nYour Text: ${this.text}, Your FeedBack: ${this.feedback}`);
     }
-};
-
+}
+;
 class Alexa extends Ai {
-    response: string;
-
-    constructor(action: string, time: string, response?: string) {
+    response;
+    constructor(action, time, response) {
         super(action, time);
         this.response = response || "Response";
     }
-};
-
+}
+;
 const myAi1 = new Siri("Task 1", "5 Mins");
 myAi1.talk();
-
 const myAi2 = new OpenAi("Task 2", "2 Mins", "Solve My Error");
 myAi2.yourText();
-
 myAi2.feedback = "Your Are Amazing Chat GTP";
 myAi2.chat();
-
 const myAi3 = new Alexa("Task 3", "7 Mins");
 console.log(myAi3);
-
 myAi3.response = "Error 404!";
 console.log(`Response: ${myAi3.response}`);
-
 // =================== Polymorphism =================== //
-
 class Engine {
-    speed: string;
-    working: number;
-
-    constructor(speed: string, working: number) {
+    speed;
+    working;
+    constructor(speed, working) {
         this.speed = speed;
         this.working = working;
-    };
-
+    }
+    ;
     progress() {
         console.log(`Engine Speed: ${this.speed}, Engine Working Hours ${this.working} Unstoppable`);
     }
-};
-
+}
+;
 class EngineX extends Engine {
-    restTime: number;
-
-    constructor(speed: string, working: number, restTime: number) {
+    restTime;
+    constructor(speed, working, restTime) {
         super(speed, working);
         this.restTime = restTime;
-    };
-
+    }
+    ;
     progress() {
         console.log(`Engine Speed: ${this.speed}, Engine Working Hours ${this.working}, \nBut Rest Time is ${this.restTime} Hours`);
     }
-};
-
+}
+;
 const myEngineX = new EngineX("12x Pro", 12, 2);
 myEngineX.progress();
-
 const myEngine = new Engine("10x", 9);
 myEngine.progress();
+export {};
